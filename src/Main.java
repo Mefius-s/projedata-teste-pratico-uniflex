@@ -126,7 +126,6 @@ public class Main {
         System.out.println("<----------------------------------------------------------------------------------------------------------------->");
 
 
-
         System.out.println("\n<----------------------------------------------------------------------------------------------------------------->");
         System.out.println("3.11 – Imprimir o total dos salários dos funcionários.");
         int somaSalarios = funcionarios.stream().mapToInt(f -> f.getSalario().intValue()).sum();
@@ -134,13 +133,7 @@ public class Main {
         System.out.println("<----------------------------------------------------------------------------------------------------------------->");
 
 
-
-
-
-
-
-
-
+//        3.12 – Imprimir quantos salários mínimos ganha cada funcionário, considerando que o salário mínimo é R$1212.00.
 
 
 
