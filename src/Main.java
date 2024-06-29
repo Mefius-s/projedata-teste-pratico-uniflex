@@ -2,6 +2,7 @@ import Model.Funcionario;
 import Model.Pessoa;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.Period;
@@ -12,7 +13,6 @@ import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-
 
         DateTimeFormatter dataFormatada = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         NumberFormat salarioFormatado = NumberFormat.getInstance(new Locale("pt", "br"));
@@ -75,17 +75,7 @@ public class Main {
         for(String key : funcaoFuncionario.keySet()) {
             System.out.println("\nFunção: " + key + "\n" + funcaoFuncionario.get(key));
         }
-
         System.out.println("<----------------------------------------------------------------------------------------------------------------->");
-
-
-//        System.out.println("\n3.6 – Imprimir os funcionários, agrupados por função.");
-//        funcaoFuncionario.forEach((funcao, listaFuncionarios) -> {
-//            System.out.println("Função: " + funcao);
-//            listaFuncionarios.forEach(System.out::println);
-//            System.out.println();
-//
-//        });
 
 
 
@@ -126,6 +116,7 @@ public class Main {
         System.out.println("<----------------------------------------------------------------------------------------------------------------->");
 
 
+
         System.out.println("\n<----------------------------------------------------------------------------------------------------------------->");
         System.out.println("3.11 – Imprimir o total dos salários dos funcionários.");
         int somaSalarios = funcionarios.stream().mapToInt(f -> f.getSalario().intValue()).sum();
@@ -133,10 +124,15 @@ public class Main {
         System.out.println("<----------------------------------------------------------------------------------------------------------------->");
 
 
-//        3.12 – Imprimir quantos salários mínimos ganha cada funcionário, considerando que o salário mínimo é R$1212.00.
-        System.out.println("teste");
 
-
+        System.out.println("\n<----------------------------------------------------------------------------------------------------------------->");
+        System.out.println("3.12 – Imprimir quantos salários mínimos ganha cada funcionário, considerando que o salário mínimo é R$1212.00.");
+        BigDecimal salarioMinimo = new BigDecimal("1212.00");
+        for (Funcionario f : funcionarios){
+            BigDecimal salarioMinimoPorFuncionario = f.getSalario().divide(salarioMinimo, 2, RoundingMode.HALF_UP);
+            System.out.println("Funcionário: " + f.getNome() + ", recebe " + salarioMinimoPorFuncionario + " salários mínimos");
+        }
+        System.out.println("<----------------------------------------------------------------------------------------------------------------->");
 
     }
 
