@@ -134,6 +134,7 @@ public class Main {
 
 
 //        3.12 – Imprimir quantos salários mínimos ganha cada funcionário, considerando que o salário mínimo é R$1212.00.
+        System.out.println("teste");
 
 
 
